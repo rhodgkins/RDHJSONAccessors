@@ -3,6 +3,10 @@ xcode_workspace: Tests/RDHJSONAccessors.xcworkspace
 xcode_scheme: RDHJSONAccessors
 xcode_sdk: macosx
 
+before_install:
+  - export LANG=en_US.UTF-8
+  - gem update cocoapods
+
 install:
   - cd Tests
   - pod install
