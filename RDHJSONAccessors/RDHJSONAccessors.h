@@ -94,4 +94,70 @@
  */
 @interface NSArray (RDHJSONAccessors)
 
+#pragma mark - Checking for null
+/// @name Checking for null
+
+/// @returns `YES` if the object at the index is `[NSNull null]`, `NO` otherwise.
+-(BOOL)isObjectNullAtIndex:(NSUInteger)index;
+
+/// @returns the object at the index, or `nil` if the entry is `[NSNull null]`.
+-(id)objectOrNilIfNSNullAtIndex:(NSUInteger)index;
+
+
+#pragma mark - Accessing String Objects
+/// @name Accessing String Objects
+
+/// @returns the string object at the index, or `nil` if either the object cannot be coerced as a `NSString` or no object is present.
+-(NSString *)stringAtIndex:(NSUInteger)index;
+
+/// @returns the string object at the index, or `defaultValue` if either the object cannot be coerced as a `NSString` or no object is present.
+-(NSString *)stringAtIndex:(NSUInteger)index defaultValue:(NSString *)defaultValue;
+
+
+#pragma mark - Accessing Numbers Objects
+/// @name Accessing Numbers Objects
+
+/// @returns the number object at the index, or `nil` if either the object is not a `NSNumber` or no object is present.
+-(NSNumber *)numberAtIndex:(NSUInteger)index;
+
+/// @returns the number object at the index, or `defaultValue` if either the object cannot be coerced as `NSNumber` or no object is present.
+-(NSNumber *)numberAtIndex:(NSUInteger)index defaultValue:(NSNumber *)defaultValue;
+
+
+#pragma mark - Accessing Decimal Numbers Objects
+/// @name Accessing Decimal Numbers Objects
+
+/// @returns the number object at the index, or `nil` if either the object cannot be coerced as a `NSDecimalNumber` or no object is present.
+-(NSDecimalNumber *)decimalNumberAtIndex:(NSUInteger)index;
+
+/// @returns the number object at the index, or `defaultValue` if either the object cannot be coerced as `NSDecimalNumber` or no object is present.
+-(NSDecimalNumber *)decimalNumberAtIndex:(NSUInteger)index defaultValue:(NSDecimalNumber *)defaultValue;
+
+
+#pragma mark - Accessing Collection Objects
+/// @name Accessing Collection Objects
+
+/// @returns the dictionary object at the index, or `nil` if either the object is not a `NSDictionary` or no object is present.
+-(NSDictionary *)dictionaryAtIndex:(NSUInteger)index;
+
+/// @returns the array object at the index, or `nil` if either the object is not a `NSArray` or no object is present.
+-(NSArray *)arrayAtIndex:(NSUInteger)index;
+
+
+#pragma mark - Accessing Objects by Class
+/// @name Accessing Objects by Class
+
+/**
+ * @returns the object at the index, or `nil` if either the object is not of the provided class, cannot be coerced to the provided class or no object is present.
+ * @warning `cls` must be one of `NSString`, `NSNumber`, `NSDecimalNumber`, `NSNull`, `NSDictionary` or `NSArray`.
+ */
+-(id)objectAtIndex:(NSUInteger)index ofClass:(Class)cls;
+
+/**
+ * @returns the object at the index, or `defaultValue` if either the object is not of the provided class, cannot be coerced to the provided class or no object is present.
+ * @warning `cls` must be one of `NSString`, `NSNumber`, `NSDecimalNumber`, `NSNull`, `NSDictionary` or `NSArray`.
+ * @warning `defaultValue` must be of the same class as the provided class.
+ */
+-(id)objectAtIndex:(NSUInteger)index ofClass:(Class)cls defaultValue:(id)defaultValue;
+
 @end
