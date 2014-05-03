@@ -1,5 +1,5 @@
 language: objective-c
-xcode_workspace: Tests/RDHJSONAccessors.xcworkspace
+xcode_workspace: RDHJSONAccessors.xcworkspace
 xcode_scheme: RDHJSONAccessors
 xcode_sdk: macosx
 
