@@ -1,0 +1,8 @@
+# Defines xcode project files as binary and merges in all changes
+*.pbxproj binary merge=union
+
+# Create a UTF-16 attribute
+[attr]utf16 diff diff=l10n
+
+*.strings utf16
+
