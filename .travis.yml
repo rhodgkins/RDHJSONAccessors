@@ -1,0 +1,5 @@
+language: objective-c
+xcode_project: Tests/RDHJSONAccessors.xcodeproj
+xcode_scheme: RDHJSONAccessors
+xcode_sdk: macosx
+
