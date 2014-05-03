@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name = 'RDHJSONAccessors'
-  s.version = '1.0.0'
+  s.version = '0.9.0'
   s.license = 'MIT'
   
   s.summary = 'Two categories on `NSDictionary` and `NSArray` for type checking values as they are extracted from JSON objects.'
