@@ -6,9 +6,9 @@
 //  Copyright (c) 2014 Rich H. All rights reserved.
 //
 
-#import <XCTest/XCTest.h>
-
 @interface RDHDictionaryNullTests : XCTestCase
+
+@property (nonatomic, copy) NSDictionary *dictionary;
 
 @end
 
@@ -18,16 +18,31 @@
 {
     [super setUp];
     // Put setup code here. This method is called before the invocation of each test method in the class.
+    
+    self.dictionary = @{@"NULL" : [NSNull null],
+                    @"NOT_NULL" : @"STRING"};
 }
 
--(void)tearDown
+-(void)test_isObjectNullForKey
 {
-    // Put teardown code here. This method is called after the invocation of each test method in the class.
-    [super tearDown];
+    expect([self.dictionary isObjectNullForKey:@"NULL"]).to.beTruthy();
+    expect([self.dictionary isObjectNullForKey:@"NOT_NULL"]).to.beFalsy();
 }
 
--(void)testExample
+-(void)test_objectOrNilIfNSNullForKey
 {
+    expect([self.dictionary objectOrNilIfNSNullForKey:@"NULL"]).to.beNil();
+    expect([self.dictionary objectOrNilIfNSNullForKey:@"NOT_NULL"]).toNot.beNil();
+    expect([self.dictionary objectOrNilIfNSNullForKey:@"NOT_NULL"]).toNot.beInstanceOf([NSNull class]);
+}
+
+-(void)test_objectForKeyofClass
+{
+    expect([self.dictionary objectForKey:@"NULL" ofClass:[NSNull class]]).to.beIdenticalTo([NSNull null]);
+    expect([self.dictionary objectForKey:@"NULL" ofClass:[NSString class]]).to.beNil();
+    
+    expect([self.dictionary objectForKey:@"NOT_NULL" ofClass:[NSString class]]).toNot.beNil();
+    expect([self.dictionary objectForKey:@"NOT_NULL" ofClass:[NSNull class]]).to.beNil();
 }
 
 @end
