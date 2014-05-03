@@ -13,6 +13,6 @@ Pod::Spec.new do |s|
 
   s.ios.platform = '6.0'
   s.osx.platform = '10.7'
-  s.source_files = '#{s.name}/*.{h,m}'
-  s.public_header_files = '#{s.name}/#{s.name}.h'
+  s.source_files = 'RDHJSONAccessors/*.{h,m}'
+  s.public_header_files = 'RDHJSONAccessors/RDHJSONAccessors.h'
 end
