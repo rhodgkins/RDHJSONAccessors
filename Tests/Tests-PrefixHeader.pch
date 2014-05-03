@@ -9,7 +9,10 @@
 #ifndef RDHJSONAccessors_Tests_PrefixHeader_pch
 #define RDHJSONAccessors_Tests_PrefixHeader_pch
 
+#define EXP_SHORTHAND
+
 #import <Foundation/Foundation.h>
+#import <Expecta/Expecta.h>
 #import "RDHJSONAccessors.h"
 
 #endif
