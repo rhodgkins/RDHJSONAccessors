@@ -1,0 +1,15 @@
+//
+//  Tests-PrefixHeader.pch
+//  RDHJSONAccessors
+//
+//  Created by Richard Hodgkins on 03/05/2014.
+//  Copyright (c) 2014 Rich H. All rights reserved.
+//
+
+#ifndef RDHJSONAccessors_Tests_PrefixHeader_pch
+#define RDHJSONAccessors_Tests_PrefixHeader_pch
+
+#import <Foundation/Foundation.h>
+#import "RDHJSONAccessors.h"
+
+#endif
