@@ -82,7 +82,7 @@
 /**
  * @returns the object for the key, or `defaultValue` if either the object is not of the provided class, cannot be coerced to the provided class or no object is present.
  * @warning `cls` must be one of `NSString`, `NSNumber`, `NSDecimalNumber`, `NSNull`, `NSDictionary` or `NSArray`.
- * @warning `defaultValue` must be of the same class as the provided class.
+ * @warning `defaultValue` must be of the same class (or a subclass) as the provided class.
  */
 -(id)objectForKey:(NSString *)aKey ofClass:(Class)cls defaultValue:(id)defaultValue;
 
@@ -156,7 +156,7 @@
 /**
  * @returns the object at the index, or `defaultValue` if either the object is not of the provided class, cannot be coerced to the provided class or no object is present.
  * @warning `cls` must be one of `NSString`, `NSNumber`, `NSDecimalNumber`, `NSNull`, `NSDictionary` or `NSArray`.
- * @warning `defaultValue` must be of the same class as the provided class.
+ * @warning `defaultValue` must be of the same class (or a subclass) as the provided class.
  */
 -(id)objectAtIndex:(NSUInteger)index ofClass:(Class)cls defaultValue:(id)defaultValue;
 
