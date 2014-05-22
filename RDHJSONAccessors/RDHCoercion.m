@@ -20,7 +20,7 @@ static id RDHCoerceObjectToClass(id object, Class cls)
         
         [allowedCoercionsMap setObject:@[[NSNumber class]] forKey:[NSString class]];
         [allowedCoercionsMap setObject:@[[NSString class]] forKey:[NSNumber class]];
-        [allowedCoercionsMap setObject:@[[NSString class]] forKey:[NSDecimalNumber class]];
+        [allowedCoercionsMap setObject:@[[NSString class], [NSNumber class]] forKey:[NSDecimalNumber class]];
         [allowedCoercionsMap setObject:@[] forKey:[NSDictionary class]];
         [allowedCoercionsMap setObject:@[] forKey:[NSArray class]];
         [allowedCoercionsMap setObject:@[] forKey:[NSNull class]];
@@ -65,13 +65,17 @@ static id RDHCoerceObjectToClass(id object, Class cls)
             
         } else if (cls == [NSDecimalNumber class]) {
             
-            NSDecimalNumber *number = [NSDecimalNumber decimalNumberWithString:object locale:enUSPOSIXLocale];
-            if ([number isEqualToNumber:[NSDecimalNumber notANumber]]) {
-                // Don't allow NaN - its not in the JSON spec
-                number = nil;
+            if ([object isKindOfClass:[NSString class]]) {
+                NSDecimalNumber *number = [NSDecimalNumber decimalNumberWithString:object locale:enUSPOSIXLocale];
+                if ([number isEqualToNumber:[NSDecimalNumber notANumber]]) {
+                    // Don't allow NaN - its not in the JSON spec
+                    number = nil;
+                }
+                return number;
+            } else {
+                // If we're not a string try to get a string for it
+                return RDHCoerceObjectToClass([object descriptionWithLocale:enUSPOSIXLocale], cls);
             }
-            return number;
-            
         }
     }
     
